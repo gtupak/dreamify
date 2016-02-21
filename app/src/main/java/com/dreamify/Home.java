@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+/**
+ * App colours from https://www.materialpalette.com/blue-grey/lime
+ */
+
 public class Home extends Activity {
     public static final int NEW_DREAM_ACTIVITY = 111;
     public static final int SHOW_DREAM_ACTIVITY = 222;
