@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Home extends Activity {
@@ -27,6 +29,8 @@ public class Home extends Activity {
 
     public TableLayout tableLayout;
 
+    public static HashMap<String,Dream> dreamsInTable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +38,14 @@ public class Home extends Activity {
         setContentView(R.layout.activity_home);
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
 
+        dreamsInTable = new HashMap<>();
+
         // Filling with dummy dreams
         // TODO
         for(int i = 0; i < 5; i++){
-            addDream("Item " + i);
+            Category [] categories = new Category[] {Category.TRAVEL, Category.ACTIVITY};
+            Dream dream = new Dream("Dream " + i, "Dream " + i + " description", categories, i);
+            addDream(dream);
         }
     }
 
@@ -58,8 +66,7 @@ public class Home extends Activity {
         switch (requestCode) {
             case (NEW_DREAM_ACTIVITY): {
                 if (resultCode == RESULT_OK) {
-                    String newDream = data.getStringExtra("dream");
-
+                    Dream newDream = (Dream) data.getSerializableExtra("NEW_DREAM");
                     addDream(newDream);
                 }
                 break;
@@ -70,9 +77,9 @@ public class Home extends Activity {
     /**
      * Helper method for adding a new dream
      */
-    private void addDream(String dream){
+    private void addDream(Dream dream){
         final TextView textView = new TextView(this);
-        textView.setText(dream);
+        textView.setText(dream.getTitle());
         textView.setTextSize(20);
 
         // Direct the user to the show dream activity
@@ -80,12 +87,11 @@ public class Home extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ShowDream.class);
-                TextView textView1 = (TextView) v;
-                TableRow tableRowParent = (TableRow) v.getParent();
-                CheckBox relatedCheckbox = (CheckBox) tableRowParent.getChildAt(1); // child(0) is text, child(1) is checkbox
+                TextView dreamTitle = (TextView) v;
 
-                intent.putExtra("dream", textView1.getText());
-                intent.putExtra("isChecked", relatedCheckbox.isChecked());
+                Dream selectedDream = dreamsInTable.get(dreamTitle.getText());
+
+                intent.putExtra("SELECTED_DREAM", selectedDream);
 
                 startActivityForResult(intent, SHOW_DREAM_ACTIVITY);
             }
@@ -99,5 +105,7 @@ public class Home extends Activity {
         tableRow.addView(textView);
         tableRow.addView(checkBox);
         tableLayout.addView(tableRow);
+
+        dreamsInTable.put(dream.getTitle(), dream);
     }
 }

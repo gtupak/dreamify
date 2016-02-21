@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Selected Dream"
-        android:id="@+id/selectedDreamName"
+        android:id="@+id/selectedDreamTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -24,27 +24,42 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Some Description"
-        android:id="@+id/selectedDreamDescription"
+        android:id="@+id/selectedDreamDetails"
         android:background="#CFD8DC"
         android:padding="10dp"
         android:textColor="#212121"
-        android:layout_above="@+id/selectedDreamCheckbox"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/selectedDreamName" />
+        android:layout_below="@+id/selectedDreamTitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="101dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
         android:id="@+id/selectedDreamCheckbox"
-        android:layout_marginTop="85dp"
         android:checked="false"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Categories"
+        android:id="@+id/textView4"
+        android:background="#CFD8DC"
+        android:padding="10dp"
+        android:textColor="#212121"
+        android:layout_below="@+id/selectedDreamDetails"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectedDreamCategoriesSpinner"
+        android:layout_below="@+id/textView4"
+        android:layout_above="@+id/selectedDreamCheckbox"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
