@@ -2,6 +2,8 @@ package com.dreamify;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -32,6 +34,8 @@ public class Home extends Activity {
         setContentView(R.layout.activity_home);
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
 
+        // Filling with dummy dreams
+        // TODO
         for(int i = 0; i < 5; i++){
             addDream("Item " + i);
         }
@@ -70,12 +74,14 @@ public class Home extends Activity {
         final TextView textView = new TextView(this);
         textView.setText(dream);
         textView.setTextSize(20);
+
+        // Direct the user to the show dream activity
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ShowDream.class);
                 TextView textView1 = (TextView) v;
-                TableRow tableRowParent= (TableRow) v.getParent();
+                TableRow tableRowParent = (TableRow) v.getParent();
                 CheckBox relatedCheckbox = (CheckBox) tableRowParent.getChildAt(1); // child(0) is text, child(1) is checkbox
 
                 intent.putExtra("dream", textView1.getText());
@@ -88,6 +94,8 @@ public class Home extends Activity {
         CheckBox checkBox = new CheckBox(this);
 
         TableRow tableRow = new TableRow(this);
+        tableRow.setBackgroundColor(Color.parseColor("#727272"));
+
         tableRow.addView(textView);
         tableRow.addView(checkBox);
         tableLayout.addView(tableRow);

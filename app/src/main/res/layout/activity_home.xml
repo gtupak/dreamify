@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.dreamify.Home">
+    tools:context="com.dreamify.Home"
+    android:background="@drawable/adventure_pattern_wallpaper">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/tableLayout"></TableLayout>
+            android:id="@+id/tableLayout"
+            android:stretchColumns="0,1"></TableLayout>
     </ScrollView>
 
     <ImageButton
