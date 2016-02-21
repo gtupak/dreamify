@@ -7,47 +7,41 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.dreamify.NewBucketItem"
-    android:id="@+id/f">
+    tools:context="com.dreamify.ShowDream">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="New Bucket Item"
-        android:id="@+id/textView"
+        android:text="Selected Dream"
+        android:id="@+id/selectedDreamName"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/confirmItemButton" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Description"
-        android:id="@+id/textView2"
-        android:layout_marginTop="141dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Some Description"
+        android:id="@+id/selectedDreamDescription"
+        android:layout_below="@+id/selectedDreamName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp" />
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
-        android:id="@+id/confirmItemButton"
-        android:layout_marginTop="105dp"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:background="#50ff5f"
-        android:textColor="#313e2c"
-        android:onClick="onAddButtonClick" />
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/selectedDreamName" />
 
-
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:id="@+id/selectedDreamCheckbox"
+        android:layout_marginTop="77dp"
+        android:checked="false"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
